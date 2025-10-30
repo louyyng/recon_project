@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  recon-app:
+    build: .
+    container_name: recon_app
+
+    volumes:
+      - .:/app
+    
+    env_file:
+      - .env
+
+    command: >
+      sh -c "echo 'Container is running. Use docker-compose run to execute commands. Example: docker-compose run recon-app example.com'"    
