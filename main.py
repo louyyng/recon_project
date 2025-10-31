@@ -20,7 +20,10 @@ recon_module = SubdomainModule(SECURITYTRAILS_API_KEY)
 target_id = db.get_or_create_target(target_domain)
 
 old_subs = db.get_active_subdomains(target_id)
-new_subs = set(recon_module.fetch_from_securitytrails(target_domain))
+print(f"INFO: There are {len(old_subs)} in database")
+
+new_subs = set(recon_module.run(target_domain))
 
 db.update_subdomains(target_id, new_subs, old_subs)
+print("Finish")
 
